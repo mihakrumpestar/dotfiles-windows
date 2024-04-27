@@ -17,7 +17,7 @@
 irm https://massgrave.dev/get | iex
 ```
 
-[Chris Titus winutil](https://github.com/ChrisTitusTech/winutil):
+[Chris Titus winutil](https://github.com/ChrisTitusTech/winutil) (can also fix installation):
 
 ```powershell
 iwr -useb https://christitus.com/win | iex
@@ -72,9 +72,8 @@ Stores:
     "Audacity.Audacity", # Audio
     "KeePassXCTeam.KeePassXC Bitwarden.Bitwarden", # Password manager
     "Discord.Discord Zoom.Zoom", # Communication
-    "AntibodySoftware.WizTree MiniTool.PartitionWizard.Free Klocman.BulkCrapUninstaller GlennDelahoy.SnappyDriverInstallerOrigin", # System utilities
+    "AntibodySoftware.WizTree AOMEI.PartitionAssistant Klocman.BulkCrapUninstaller GlennDelahoy.SnappyDriverInstallerOrigin", # System utilities
     "CPUID.CPU-Z CPUID.HWMonitor CrystalDewWorld.CrystalDiskInfo", # System info
-    "Python.Python.3.12" # Language support
   )
 
   $command = "winget install --accept-source-agreements --silent --disable-interactivity --accept-package-agreements " + ($packages -join ' ')
@@ -85,12 +84,14 @@ Stores:
     "superslicer", # 3D printing
     "raidrive" # Mount storage
     "handbrake", # Video
+    "python" # Language support, winget has python bind by specific version
   )
 
   $command = "choco install -y " + ($packages -join ' ')
   Invoke-Expression $command
 
-  # Manually install LaserCut
+  # Manually install: LaserCut
+  # TO ne installed by users: Solidworks
   ```
 
 - Advanced:
@@ -139,11 +140,15 @@ Stores:
   - VirtualHere Client
 
 - Firefox addons:
-  - [ublock-origin](https://addons.mozilla.org/en-US/firefox/addon/ublock-origin)
-  - [instant-translate](https://addons.mozilla.org/en-US/firefox/addon/instant-translate)
-  - [tabliss](https://addons.mozilla.org/en-US/firefox/addon/tabliss/)
-  - [bitwarden](https://addons.mozilla.org/en-US/firefox/addon/bitwarden-password-manager/)
 
-## Fixes
+  - [Cookie AutoDelete](https://addons.mozilla.org/en-US/firefox/addon/cookie-autodelete/)
+  - [Dark Reader](https://addons.mozilla.org/en-US/firefox/addon/darkreader/)
+  - [KeePassXC-Browser](https://addons.mozilla.org/en-US/firefox/addon/keepassxc-browser/)
+  - [Mate Translate – translator, dictionary](https://addons.mozilla.org/en-US/firefox/addon/instant-translate/)
+  - [Panorama Tab Groups](https://addons.mozilla.org/en-US/firefox/addon/panorama-tab-groups/)
+  - [Simple Translate](https://addons.mozilla.org/en-US/firefox/addon/simple-translate/)
+  - [Tabliss - New Tab](https://addons.mozilla.org/en-US/firefox/addon/tabliss/)
+  - [TWP - Translate Web Pages](https://addons.mozilla.org/en-US/firefox/addon/traduzir-paginas-web/)
+  - [uBlock Origin](https://addons.mozilla.org/en-US/firefox/addon/ublock-origin)
 
-- [Fix corrupt windows install](https://christitus.com/fix-corrupt-windows-install/)
+  - [Bitwarden Password Manager](https://addons.mozilla.org/en-US/firefox/addon/bitwarden-password-manager/)
