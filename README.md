@@ -73,7 +73,7 @@ Stores:
     "KeePassXCTeam.KeePassXC Bitwarden.Bitwarden", # Password manager
     "Discord.Discord Zoom.Zoom", # Communication
     "AntibodySoftware.WizTree AOMEI.PartitionAssistant Klocman.BulkCrapUninstaller GlennDelahoy.SnappyDriverInstallerOrigin", # System utilities
-    "CPUID.CPU-Z CPUID.HWMonitor CrystalDewWorld.CrystalDiskInfo", # System info
+    "CPUID.CPU-Z CPUID.HWMonitor CrystalDewWorld.CrystalDiskInfo" # System info
   )
 
   $command = "winget install --accept-source-agreements --silent --disable-interactivity --accept-package-agreements " + ($packages -join ' ')
@@ -84,6 +84,7 @@ Stores:
     "superslicer", # 3D printing
     "raidrive" # Mount storage
     "handbrake", # Video
+    "kdeconnect-kde", # Connect devices
     "python" # Language support, winget has python bind by specific version
   )
 
