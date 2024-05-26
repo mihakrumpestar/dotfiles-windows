@@ -1,36 +1,47 @@
-# Windows dotfiles
+<!-- markdownlint-disable MD033 MD041 -->
 
-## ISO install
+<!--- Title --->
 
-1. Standard Windows installer:
+<p align="center" style="font-size: 42px; font-weight: bold; margin-top: 200px; margin-bottom: 60px;">
+    Windows dotfiles
+</p>
 
-   > When you get to the "Let's add your Microsoft account" phase in Windows 11 Setup, enter `no@thankyou.com` in the Sign in field and then select the Next button.
+# 1. ISO install
 
-   [Disable Defender](https://github.com/swagkarna/Defeat-Defender-V1.2.0):
-   Alternatives: [alt1](https://github.com/qtkite/defender-control), [alt2](https://github.com/teeotsa/windows-11-debloat)
+## 1.1. [Ghost Spectre](https://tech-latest.com/ghost-spectre-windows-11/)
 
-2. [Ghost Spectre](https://tech-latest.com/ghost-spectre-windows-11/)
+Others:
 
-[Activate Windows and Office](https://github.com/massgravel/Microsoft-Activation-Scripts):
+- Standard Windows installer:
+
+  > When you get to the "Let's add your Microsoft account" phase in Windows 11 Setup, enter `no@thankyou.com` in the Sign in field and then select the Next button.
+
+  [Disable Defender](https://github.com/swagkarna/Defeat-Defender-V1.2.0): [alt1](https://github.com/qtkite/defender-control), [alt2](https://github.com/teeotsa/windows-11-debloat)
+
+- Windows 10 Enterprise LTSC (you can use NTLite to modify ISO)
+- [ReviOS](https://revi.cc/revios/download/?method=iso): custom Windows
+- [Gandalf’s Windows 11 PE](http://windowsmatters.com/): live Windows debugging
+
+## 1.2. [Activate Windows and Office](https://github.com/massgravel/Microsoft-Activation-Scripts):
 
 ```powershell
 irm https://massgrave.dev/get | iex
 ```
 
-[Chris Titus winutil](https://github.com/ChrisTitusTech/winutil) (can also fix installation):
+## 1.3. [Chris Titus winutil](https://github.com/ChrisTitusTech/winutil) (can also fix installation):
 
 ```powershell
 iwr -useb https://christitus.com/win | iex
 ```
 
-## Miscellaneous
+# 2. Miscellaneous
 
 Create user:
 
 ```powershell
 # Define the username and password
-$userName = "<NewAdminUser>"
-$password = ConvertTo-SecureString "<YourStrongPasswordHere>" -AsPlainText -Force
+$userName = [NewAdminUser]
+$password = ConvertTo-SecureString [YourStrongPasswordHere] -AsPlainText -Force
 
 # Create the new local user
 New-LocalUser -Name $userName -Password $password -Description "Administrator account" -AccountNeverExpires
@@ -39,9 +50,33 @@ Set-LocalUser -Name $userName -PasswordNeverExpires $true
 Add-LocalGroupMember -Group "Administrators" -Member $userName
 ```
 
-## Package managers
+Enable Printer Service:
 
-Stores:
+```powershell
+$printerService = "Spooler"
+if ((Get-Service -Name $printerService).Status -ne 'Running') {
+    Set-Service -Name $printerService -StartupType Automatic
+    Start-Service -Name $printerService
+    Write-Output "$printerService service is now enabled and started."
+} else {
+    Write-Output "$printerService service is already running."
+}
+```
+
+Enable Fingerprint Service:
+
+```powershell
+$fingerprintService = "WbioSrvc"
+if ((Get-Service -Name $fingerprintService).Status -ne 'Running') {
+    Set-Service -Name $fingerprintService -StartupType Automatic
+    Start-Service -Name $fingerprintService
+    Write-Output "$fingerprintService service is now enabled and started."
+} else {
+    Write-Output "$fingerprintService service is already running."
+}
+```
+
+# 3. Package managers
 
 - [Chocolatey](https://community.chocolatey.org/packages):
 
@@ -58,7 +93,7 @@ Stores:
   winget upgrade winget
   ```
 
-## Programs
+# 4. Programs
 
 - Basic:
 
@@ -80,9 +115,10 @@ Stores:
   Invoke-Expression $command
 
   $packages = @(
+    "office-tool", # MS Office installer
     "inventor autocad", # CAD
     "superslicer", # 3D printing
-    "raidrive" # Mount storage
+    "raidrive", # Mount storage
     "handbrake", # Video
     "kdeconnect-kde", # Connect devices
     "python" # Language support, winget has python bind by specific version
@@ -90,20 +126,23 @@ Stores:
 
   $command = "choco install -y " + ($packages -join ' ')
   Invoke-Expression $command
-
-  # Manually install: LaserCut
-  # TO ne installed by users: Solidworks
   ```
+
+  Manually install:
+
+  - LaserCut
+
+  To be installed by users:
+
+  - Solidworks
 
 - Advanced:
 
   ```powershell
   choco install -y github-desktop msiafterburner libreoffice-fresh
-  # For MS Office
-  choco install -y office-tool
-
-  # Manually install https://www.bikechecker.com/demo.php # LinkageX3
   ```
+
+  Manually install [LinkageX3](https://www.bikechecker.com/demo.php)
 
 - Benchmarks:
 
@@ -123,13 +162,13 @@ Stores:
   Invoke-Expression $command
   ```
 
-## Manually
+# 5. Manually
 
 - Snappy Driver Installer Origin: Install drivers
+- Install MS Office if required
 - Set default apps
 - Set dark theme
-- Enable printer service and add printer
-- Enable fingerprint
+- Add printer
 - Startup:
 
   ```powershell
