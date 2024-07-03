@@ -1,0 +1,6 @@
+version: "3"
+
+tasks:
+  merge:
+    cmds:
+      - meld README.md ~/mnt/nextcloud-personal/shared/system-images/dotfiles-windows/README.md
