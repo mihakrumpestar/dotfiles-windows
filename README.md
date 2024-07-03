@@ -2,9 +2,9 @@
 
 <!--- Title --->
 
-<p align="center" style="font-size: 42px; font-weight: bold; margin-top: 200px; margin-bottom: 60px;">
+<h1 align="center" style="font-size: 42px; font-weight: bold; margin-top: 200px; margin-bottom: 60px;">
 Windows dotfiles
-</p>
+</h1>
 
 # 1. ISO install
 
