@@ -3,7 +3,7 @@
 <!--- Title --->
 
 <p align="center" style="font-size: 42px; font-weight: bold; margin-top: 200px; margin-bottom: 60px;">
-    Windows dotfiles
+Windows dotfiles
 </p>
 
 # 1. ISO install
@@ -40,8 +40,8 @@ Create user:
 
 ```powershell
 # Define the username and password
-$userName = [NewAdminUser]
-$password = ConvertTo-SecureString [YourStrongPasswordHere] -AsPlainText -Force
+$userName = <userName>
+$password = ConvertTo-SecureString <password> -AsPlainText -Force
 
 # Create the new local user
 New-LocalUser -Name $userName -Password $password -Description "Administrator account" -AccountNeverExpires
@@ -100,15 +100,15 @@ if ((Get-Service -Name $fingerprintService).Status -ne 'Running') {
   ```powershell
   $packages = @(
     "SomePythonThings.WingetUIStore", # UI for package managers
-    "LibreWolf.LibreWolf Brave.Brave",  # Browsers
+    "LibreWolf.LibreWolf", "Brave.Brave",  # Browsers
     "ONLYOFFICE.DesktopEditors", # Office suite
-    "Daum.PotPlayer GIMP.GIMP Inkscape.Inkscape DuongDieuPhap.ImageGlass Upscayl.Upscayl OBSProject.OBSStudio", # Media, alternatives: nomacs, VideoLAN.VLC
-    "ActivityWatch.ActivityWatch 7zip.7zip KDE.Kate Microsoft.VisualStudioCode geeksoftwareGmbH.PDF24Creator Ventoy.Ventoy MatteoRossi.iCopy Nextcloud.NextcloudDesktop NGWIN.PicPick KDE.Okular VirtualHere.USBClient Xournal++.Xournal++ BleachBit.BleachBit voidtools.Everything stnkl.EverythingToolbar", # Tools
+    "Daum.PotPlayer", "GIMP.GIMP", "Inkscape.Inkscape", "DuongDieuPhap.ImageGlass", "Upscayl.Upscayl", "OBSProject.OBSStudio", # Media
+    "ActivityWatch.ActivityWatch", "7zip.7zip", "KDE.Kate", "Microsoft.VisualStudioCode", "geeksoftwareGmbH.PDF24Creator", "Ventoy.Ventoy", "MatteoRossi.iCopy", "Nextcloud.NextcloudDesktop", "NGWIN.PicPick", "KDE.Okular", "VirtualHere.USBClient", "Xournal++.Xournal++", "BleachBit.BleachBit", "voidtools.Everything", "stnkl.EverythingToolbar", # Tools
     "Audacity.Audacity", # Audio
-    "KeePassXCTeam.KeePassXC Bitwarden.Bitwarden", # Password manager
-    "Discord.Discord Zoom.Zoom", # Communication
-    "AntibodySoftware.WizTree AOMEI.PartitionAssistant Klocman.BulkCrapUninstaller GlennDelahoy.SnappyDriverInstallerOrigin", # System utilities
-    "CPUID.CPU-Z CPUID.HWMonitor CrystalDewWorld.CrystalDiskInfo" # System info
+    "KeePassXCTeam.KeePassXC", "Bitwarden.Bitwarden", # Password manager
+    "Discord.Discord", "Zoom.Zoom", # Communication
+    "AntibodySoftware.WizTree", "AOMEI.PartitionAssistant", "Klocman.BulkCrapUninstaller", "GlennDelahoy.SnappyDriverInstallerOrigin", # System utilities
+    "CPUID.CPU-Z", "CPUID.HWMonitor", "CrystalDewWorld.CrystalDiskInfo" # System info
   )
 
   $command = "winget install --accept-source-agreements --silent --disable-interactivity --accept-package-agreements " + ($packages -join ' ')
@@ -116,7 +116,7 @@ if ((Get-Service -Name $fingerprintService).Status -ne 'Running') {
 
   $packages = @(
     "office-tool", # MS Office installer
-    "inventor autocad", # CAD
+    "inventor", "autocad", # CAD
     "superslicer", # 3D printing
     "raidrive", # Mount storage
     "handbrake", # Video
@@ -180,7 +180,6 @@ if ((Get-Service -Name $fingerprintService).Status -ne 'Running') {
   - VirtualHere Client
 
 - Firefox addons:
-
   - [Cookie AutoDelete](https://addons.mozilla.org/en-US/firefox/addon/cookie-autodelete/)
   - [Dark Reader](https://addons.mozilla.org/en-US/firefox/addon/darkreader/)
   - [KeePassXC-Browser](https://addons.mozilla.org/en-US/firefox/addon/keepassxc-browser/)
@@ -190,5 +189,4 @@ if ((Get-Service -Name $fingerprintService).Status -ne 'Running') {
   - [Tabliss - New Tab](https://addons.mozilla.org/en-US/firefox/addon/tabliss/)
   - [TWP - Translate Web Pages](https://addons.mozilla.org/en-US/firefox/addon/traduzir-paginas-web/)
   - [uBlock Origin](https://addons.mozilla.org/en-US/firefox/addon/ublock-origin)
-
   - [Bitwarden Password Manager](https://addons.mozilla.org/en-US/firefox/addon/bitwarden-password-manager/)
