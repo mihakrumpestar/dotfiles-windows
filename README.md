@@ -99,7 +99,7 @@ if ((Get-Service -Name $fingerprintService).Status -ne 'Running') {
 
   ```powershell
   $packages = @(
-    "SomePythonThings.WingetUIStore", # UI for package managers
+    "MartiCliment.UniGetUI", # UI for package managers
     "LibreWolf.LibreWolf", "Brave.Brave",  # Browsers
     "ONLYOFFICE.DesktopEditors", # Office suite
     "Daum.PotPlayer", "GIMP.GIMP", "Inkscape.Inkscape", "DuongDieuPhap.ImageGlass", "Upscayl.Upscayl", "OBSProject.OBSStudio", # Media
