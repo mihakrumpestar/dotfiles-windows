@@ -25,7 +25,7 @@ Others:
 ## 1.2. [Activate Windows and Office](https://github.com/massgravel/Microsoft-Activation-Scripts):
 
 ```powershell
-irm https://massgrave.dev/get | iex
+irm https://get.activated.win | iex
 ```
 
 ## 1.3. [Chris Titus winutil](https://github.com/ChrisTitusTech/winutil) (can also fix installation):
