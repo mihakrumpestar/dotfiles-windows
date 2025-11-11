@@ -100,6 +100,7 @@ if ((Get-Service -Name $fingerprintService).Status -ne 'Running') {
   ```powershell
   $packages = @(
     "MartiCliment.UniGetUI", # UI for package managers
+    "RClone-Manager.rclone-manager", # Rclone desktop UI
     "LibreWolf.LibreWolf", "Brave.Brave",  # Browsers
     "ONLYOFFICE.DesktopEditors", # Office suite
     "Daum.PotPlayer", "GIMP.GIMP", "Inkscape.Inkscape", "DuongDieuPhap.ImageGlass", "Upscayl.Upscayl", "OBSProject.OBSStudio", # Media
@@ -166,6 +167,7 @@ if ((Get-Service -Name $fingerprintService).Status -ne 'Running') {
 
 - Snappy Driver Installer Origin: Install drivers
 - Install MS Office if required
+- Set RClone-Manager shared storage
 - Set default apps
 - Set dark theme
 - Add printer
