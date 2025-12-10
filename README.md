@@ -76,21 +76,10 @@ if ((Get-Service -Name $fingerprintService).Status -ne 'Running') {
 }
 ```
 
-# 3. Package managers
-
-- [Chocolatey](https://community.chocolatey.org/packages):
+# 3. Store
 
   ```powershell
-  Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
-
-  # Upgrade with
-  # choco upgrade [program]
-  ```
-
-- Winget:
-
-  ```powershell
-  winget upgrade winget
+  winget install --exact --id MartiCliment.UniGetUI --source winget
   ```
 
 # 4. Programs
@@ -99,17 +88,16 @@ if ((Get-Service -Name $fingerprintService).Status -ne 'Running') {
 
   ```powershell
   $packages = @(
-    "MartiCliment.UniGetUI", # UI for package managers
     "RClone-Manager.rclone-manager", # Rclone desktop UI
     "LibreWolf.LibreWolf", "Brave.Brave",  # Browsers
     "ONLYOFFICE.DesktopEditors", # Office suite
     "Daum.PotPlayer", "GIMP.GIMP", "Inkscape.Inkscape", "DuongDieuPhap.ImageGlass", "Upscayl.Upscayl", "OBSProject.OBSStudio", # Media
-    "ActivityWatch.ActivityWatch", "7zip.7zip", "KDE.Kate", "Microsoft.VisualStudioCode", "geeksoftwareGmbH.PDF24Creator", "Ventoy.Ventoy", "MatteoRossi.iCopy", "Nextcloud.NextcloudDesktop", "NGWIN.PicPick", "KDE.Okular", "VirtualHere.USBClient", "Xournal++.Xournal++", "BleachBit.BleachBit", "voidtools.Everything", "stnkl.EverythingToolbar", # Tools
+    "ActivityWatch.ActivityWatch", "7zip.7zip", "KDE.Kate", "Microsoft.VisualStudioCode", "geeksoftwareGmbH.PDF24Creator", "Ventoy.Ventoy", "Nextcloud.NextcloudDesktop", "NGWIN.PicPick", "KDE.Okular", "VirtualHere.USBClient", "Xournal++.Xournal++", "BleachBit.BleachBit", "voidtools.Everything", "stnkl.EverythingToolbar", # Tools
     "Audacity.Audacity", # Audio
     "KeePassXCTeam.KeePassXC", "Bitwarden.Bitwarden", # Password manager
-    "Discord.Discord", "Zoom.Zoom", # Communication
+    "Discord.Discord", # Communication
     "AntibodySoftware.WizTree", "AOMEI.PartitionAssistant", "Klocman.BulkCrapUninstaller", "GlennDelahoy.SnappyDriverInstallerOrigin", # System utilities
-    "CPUID.CPU-Z", "CPUID.HWMonitor", "CrystalDewWorld.CrystalDiskInfo" # System info
+    "CPUID.CPU-Z", "CPUID.HWMonitor", "CrystalDewWorld.CrystalDiskInfo", "FinalWire.AIDA64.Extreme", "Maxon.CinebenchR23" # System info
   )
 
   $command = "winget install --accept-source-agreements --silent --disable-interactivity --accept-package-agreements " + ($packages -join ' ')
@@ -119,10 +107,8 @@ if ((Get-Service -Name $fingerprintService).Status -ne 'Running') {
     "office-tool", # MS Office installer
     "inventor", "autocad", # CAD
     "superslicer", # 3D printing
-    "raidrive", # Mount storage
     "handbrake", # Video
     "kdeconnect-kde", # Connect devices
-    "python" # Language support, winget has python bind by specific version
   )
 
   $command = "choco install -y " + ($packages -join ' ')
