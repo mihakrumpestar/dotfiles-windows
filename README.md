@@ -76,6 +76,12 @@ if ((Get-Service -Name $fingerprintService).Status -ne 'Running') {
 }
 ```
 
+Disable `Administrator` account when you create the users admin account:
+
+```powershell
+net user Administrator /active:no
+```
+
 # 3. Store
 
   ```powershell
