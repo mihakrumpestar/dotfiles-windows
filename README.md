@@ -24,6 +24,15 @@ Others:
 
 ## 1.2. [Activate Windows and Office](https://github.com/massgravel/Microsoft-Activation-Scripts):
 
+Office (customize deployment <https://config.office.com/deploymentsettings>):
+
+```powershell
+winget install -e --id Microsoft.OfficeDeploymentTool --accept-source-agreements --silent --disable-interactivity --accept-package-agreements
+setup /configure office-configuration.xml
+```
+
+Activation:
+
 ```powershell
 irm https://get.activated.win | iex
 ```
@@ -85,40 +94,53 @@ net user Administrator /active:no
 # 3. Store
 
   ```powershell
-  winget install --exact --id MartiCliment.UniGetUI --source winget
+  winget install --exact --id MartiCliment.UniGetUI --source winget --accept-source-agreements --silent --disable-interactivity --accept-package-agreements
   ```
 
 # 4. Programs
+
+Search apps: <https://winstall.app/>
 
 - Basic:
 
   ```powershell
   $packages = @(
-    "RClone-Manager.rclone-manager", # Rclone desktop UI
-    "LibreWolf.LibreWolf", "Brave.Brave",  # Browsers
-    "ONLYOFFICE.DesktopEditors", # Office suite
-    "Daum.PotPlayer", "GIMP.GIMP", "Inkscape.Inkscape", "DuongDieuPhap.ImageGlass", "Upscayl.Upscayl", "OBSProject.OBSStudio", # Media
-    "ActivityWatch.ActivityWatch", "7zip.7zip", "KDE.Kate", "Microsoft.VisualStudioCode", "geeksoftwareGmbH.PDF24Creator", "Ventoy.Ventoy", "Nextcloud.NextcloudDesktop", "NGWIN.PicPick", "KDE.Okular", "VirtualHere.USBClient", "Xournal++.Xournal++", "BleachBit.BleachBit", "voidtools.Everything", "stnkl.EverythingToolbar", # Tools
-    "Audacity.Audacity", # Audio
-    "KeePassXCTeam.KeePassXC", "Bitwarden.Bitwarden", # Password manager
-    "Discord.Discord", # Communication
-    "AntibodySoftware.WizTree", "AOMEI.PartitionAssistant", "Klocman.BulkCrapUninstaller", "GlennDelahoy.SnappyDriverInstallerOrigin", # System utilities
-    "CPUID.CPU-Z", "CPUID.HWMonitor", "CrystalDewWorld.CrystalDiskInfo", "FinalWire.AIDA64.Extreme", "Maxon.CinebenchR23" # System info
+    # Rclone desktop UI
+    "RClone-Manager.rclone-manager", "WinFsp.WinFsp", "Rclone.Rclone",
+    # Browsers
+    "LibreWolf.LibreWolf", "Brave.Brave", "Microsoft.Edge", # Edge is required for webview for some apps
+    # Office suite
+    "TheDocumentFoundation.LibreOffice",
+    # Media
+    "Daum.PotPlayer", "GIMP.GIMP", "Inkscape.Inkscape", "DuongDieuPhap.ImageGlass", "Upscayl.Upscayl", "OBSProject.OBSStudio", "HandBrake.HandBrake",
+    # Tools
+    "ActivityWatch.ActivityWatch", "7zip.7zip", "RARLab.WinRAR", "KDE.Kate", "VSCodium.VSCodium", "geeksoftwareGmbH.PDF24Creator", "Ventoy.Ventoy", "Nextcloud.NextcloudDesktop", "NGWIN.PicPick", "KDE.Okular", "VirtualHere.USBClient", "KDE.KDEConnect",
+    # Audio
+    "Audacity.Audacity",
+    # Password manager
+    "KeePassXCTeam.KeePassXC",
+    # Communication
+    "Discord.Discord",
+    # System utilities
+    "AntibodySoftware.WizTree", "AOMEI.PartitionAssistant", "Klocman.BulkCrapUninstaller", "GlennDelahoy.SnappyDriverInstallerOrigin", "BleachBit.BleachBit",
+    # System info
+    "CPUID.CPU-Z", "CPUID.HWMonitor", "CrystalDewWorld.CrystalDiskInfo", "FinalWire.AIDA64.Extreme", "Maxon.CinebenchR23"
   )
 
-  $command = "winget install --accept-source-agreements --silent --disable-interactivity --accept-package-agreements " + ($packages -join ' ')
-  Invoke-Expression $command
+  $wingetArgs = @(
+    "install"
+    "--accept-source-agreements"
+    "--silent"
+    "--disable-interactivity"
+    "--accept-package-agreements"
+  ) + $packages
 
-  $packages = @(
-    "office-tool", # MS Office installer
-    "inventor", "autocad", # CAD
-    "superslicer", # 3D printing
-    "handbrake", # Video
-    "kdeconnect-kde", # Connect devices
-  )
+  winget @wingetArgs
 
-  $command = "choco install -y " + ($packages -join ' ')
-  Invoke-Expression $command
+  # For remote, add: RustDesk.RustDesk
+
+  # Add to startup
+  Copy-Item "C:\Users\test\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Virtual Here USB Client.lnk" "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Startup"
   ```
 
   Manually install:
@@ -128,11 +150,12 @@ net user Administrator /active:no
   To be installed by users:
 
   - Solidworks
+  - AutoCAD
 
 - Advanced:
 
   ```powershell
-  choco install -y github-desktop msiafterburner libreoffice-fresh
+  choco install -y github-desktop msiafterburner  superslicer
   ```
 
   Manually install [LinkageX3](https://www.bikechecker.com/demo.php)
@@ -151,8 +174,15 @@ net user Administrator /active:no
     "9MVLWT5DMSKR" # Lenovo Pen Settings
   )
 
-  $command = "winget install --accept-source-agreements --silent --disable-interactivity --accept-package-agreements " + ($packages -join ' ')
-  Invoke-Expression $command
+  $wingetArgs = @(
+    "install"
+    "--accept-source-agreements"
+    "--silent"
+    "--disable-interactivity"
+    "--accept-package-agreements"
+  ) + $packages
+
+  winget @wingetArgs
   ```
 
 # 5. Manually
@@ -163,17 +193,8 @@ net user Administrator /active:no
 - Set default apps
 - Set dark theme
 - Add printer
-- Startup:
 
-  ```powershell
-  C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Startup
-  ```
-
-  Add programs (shortcuts) to be run on startup:
-
-  - VirtualHere Client
-
-- Firefox addons:
+- LibreWolf addons:
   - [Cookie AutoDelete](https://addons.mozilla.org/en-US/firefox/addon/cookie-autodelete/)
   - [Dark Reader](https://addons.mozilla.org/en-US/firefox/addon/darkreader/)
   - [KeePassXC-Browser](https://addons.mozilla.org/en-US/firefox/addon/keepassxc-browser/)
@@ -183,4 +204,3 @@ net user Administrator /active:no
   - [Tabliss - New Tab](https://addons.mozilla.org/en-US/firefox/addon/tabliss/)
   - [TWP - Translate Web Pages](https://addons.mozilla.org/en-US/firefox/addon/traduzir-paginas-web/)
   - [uBlock Origin](https://addons.mozilla.org/en-US/firefox/addon/ublock-origin)
-  - [Bitwarden Password Manager](https://addons.mozilla.org/en-US/firefox/addon/bitwarden-password-manager/)
