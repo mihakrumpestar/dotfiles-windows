@@ -6,17 +6,11 @@
 Windows dotfiles
 </h1>
 
-# 1. ISO install
+## ISO install
 
-## 1.1. [Ghost Spectre](https://tech-latest.com/ghost-spectre-windows-11/)
+Using: [Ghost Spectre](https://tech-latest.com/ghost-spectre-windows-11/)
 
 Others:
-
-- Standard Windows installer:
-
-  > When you get to the "Let's add your Microsoft account" phase in Windows 11 Setup, enter `no@thankyou.com` in the Sign in field and then select the Next button.
-
-  [Disable Defender](https://github.com/swagkarna/Defeat-Defender-V1.2.0): [alt1](https://github.com/qtkite/defender-control), [alt2](https://github.com/teeotsa/windows-11-debloat)
 
 - [Windows 11 IoT Enterprise](https://massgrave.dev/windows_11_links)
 - [ReviOS](https://revi.cc/revios/download/?method=iso): custom Windows
@@ -44,7 +38,7 @@ Software:
 winget install -e --id NoMachine.NoMachine --source winget --accept-source-agreements --silent --disable-interactivity --accept-package-agreements
 ```
 
-# Miscellaneous
+## Miscellaneous
 
 Enable Printer Service:
 
@@ -85,7 +79,7 @@ Disable `Administrator` account when you create the users admin account:
 net user Administrator /active:no
 ```
 
-## [Activate Windows and Office](https://github.com/massgravel/Microsoft-Activation-Scripts):
+## [Activate Windows and Office](https://github.com/massgravel/Microsoft-Activation-Scripts)
 
 Office (customize deployment <https://config.office.com/deploymentsettings>):
 
@@ -100,7 +94,7 @@ Activation:
 irm https://get.activated.win | iex
 ```
 
-# Store
+## Store
 
   ```powershell
   winget install --exact --id MartiCliment.UniGetUI  --source winget --accept-source-agreements --silent --disable-interactivity --accept-package-agreements
@@ -108,7 +102,7 @@ irm https://get.activated.win | iex
   Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
   ```
 
-# 4. Programs
+## Programs
 
 Search apps: <https://winstall.app/>
 
@@ -181,7 +175,7 @@ Search apps: <https://winstall.app/>
   }
   ```
 
-# Manually
+## Manually
 
 - Snappy Driver Installer Origin: Install drivers
 - Set RClone-Manager shared storage
