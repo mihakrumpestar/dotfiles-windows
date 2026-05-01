@@ -12,6 +12,7 @@ Using: [Ghost Spectre](https://tech-latest.com/ghost-spectre-windows-11/)
 
 Others:
 
+- [AtlasOS](https://docs.atlasos.net/getting-started/install/install-iso-injection/)
 - [Windows 11 IoT Enterprise](https://massgrave.dev/windows_11_links)
 - [ReviOS](https://revi.cc/revios/download/?method=iso): custom Windows
 - [Gandalf’s Windows 11 PE](http://windowsmatters.com/): live Windows debugging
